@@ -87,43 +87,42 @@ class Activity {
     return activity
   }
 
-
-  makeFriends(user) {
-    const friendsList = user.userFriends.map(friends => userRepo.getUserByID(friends))
-    const friendUsers = []
-    for (let i = 0 ; i < friendsList.length ; i++) {
-      this["newFriend"+i] = new User(friendsList[i])
-      friendUsers.push(this["newFriend"+i])
-    }
-    return friendUsers
-  }
+  // makeFriends(user) {
+  //   const friendsList = user.userFriends.map(friend => userRepo.getUserByID(friend))
+  //   const friendUsers = []
+  //   for (let i = 0 ; i < friendsList.length ; i++) {
+  //     this["newFriend"+i] = new User(friendsList[i])
+  //     friendUsers.push(this["newFriend"+i])
+  //   }
+  //   return friendUsers
+  // }
 
   getUserActivityData(activityInfo, user) {
     const currentUser = user || this.currentUser
-    let activityData = activityInfo || this.activityData
-    return activityData.filter(activity => activity.userID === currentUser.id)  
+    const activityData = activityInfo || this.activityData
+    return activityData.filter(activity => activity.userID === currentUser.id)
   }
 
-  getFriendsData(user, date) {
-    const friends = this.makeFriends(user)
+  getFriendsData(user, date, friendsList) {
+    const friends = friendsList
     const friendsData = friends.map(friend => this.getOneUserWeekOfActivityData(date, friend))
     this.getFriendsSteps(friendsData)
+    return friendsData
   }
 
   getFriendsSteps(friendsData) {
-      let obj = {}
-      let reducedFriends = friendsData.reduce((acc, stepCount) => {
-        stepCount.forEach(count => {
-          acc += count.numSteps
-          console.log(acc)
-        })
-        obj.totalSteps = acc
-        obj.id = stepCount[0].userID
+    return friendsData.map(friend => {
+      const friendInfo = {}
+      friend.reduce((acc, stepData) => {
+        if(friendInfo.id !== stepData.userID) {
+          friendInfo.id = stepData.userID
+        }
+        acc += stepData.numSteps
+        friendInfo.stepTotal = acc
         return acc
       }, 0)
-      console.log(obj)
-      return obj
-    // })
+      return friendInfo
+    })
   }
 //Get friends from user.userFriends
 //forEach friend get a week of activity data(this is where I think they need to be new instances of user... or maybe activity?)

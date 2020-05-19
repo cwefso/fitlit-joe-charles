@@ -29,11 +29,14 @@ function showInfoCard(user) {
                      </section>
                      `
 }
-
-
 function createFriendsList(user) {
+const friendsList = user.userFriends.map(friends => userRepo.getUserByID(friends))
+return friendsList
+}
+
+function displayFriendsList(user) {
+  const friendsList = createFriendsList(user)
   const friendsNames = document.querySelector('.friends-names')
-  const friendsList = user.userFriends.map(friends => userRepo.getUserByID(friends))
   friendsList.forEach(friend => friendsNames.insertAdjacentHTML('beforeEnd', `<p>${friend.name.split(' ')[0]}</p>`))
 }
 
@@ -53,7 +56,7 @@ function compareStepGoal(user) {
 
 function displayUserInfo(user) {
   showInfoCard(user)
-  createFriendsList(user)
+  displayFriendsList(user)
   createStepGoal(user)
   compareStepGoal(user)
 }
@@ -105,6 +108,7 @@ function showSleepCard(newSleep) {
 function makeActivity(user) {
   let newActivity = new Activity(activityData, user)
   showActivityCard(newActivity, user)
+  displayStepChallenge(newActivity)
 }
 
 function showActivityCard(newActivity, user) {
@@ -128,13 +132,27 @@ function showActivityCard(newActivity, user) {
   <p class="box-text">${weeksActivityData[7].date}: Steps: ${weeksActivityData[7].numSteps} Minutes Active: ${weeksActivityData[7].minutesActive} Flights Of Stairs: ${weeksActivityData[7].flightsOfStairs}</p>
   </section>
   `
-  newActivity.getFriendsData(user, todaysDate)
+  // newActivity.getFriendsData(user, todaysDate)
 }
+
+function displayStepChallenge(activity) {
+  const friendsList = createFriendsList(activity.currentUser)
+  const userData = activity.getFriendsData('', todaysDate, friendsList)
+  const allFriendsTotalSteps = activity.getFriendsSteps(userData)
+}
+
+// makeFriends(user) {
+//   const friendsList = user.userFriends.map(friend => userRepo.getUserByID(friend))
+//   const friendUsers = []
+//   for (let i = 0 ; i < friendsList.length ; i++) {
+//     this["newFriend"+i] = new User(friendsList[i])
+//     friendUsers.push(this["newFriend"+i])
+//   }
+//   return friendUsers
+// }
 
 
 
 
 
 makeUser()
-
-
