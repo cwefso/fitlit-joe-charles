@@ -18,16 +18,29 @@ function makeUser() {
 function showInfoCard(user) {
   users.innerHTML = `<section class="user-info">
                      <p class="welcome">Welcome Back ${user.getFirstName()}!</p>
-                     <p>Address: ${user.address}</p>
-                     <p>Email: ${user.email}</p>
-                     <p>Stride Length: ${user.strideLength}</p>
-                     <p>Daily Step Goal: ${user.dailyStepGoal}</p>
-                     <section class='friends-names'>Your friends:</section>
-                     <p>ID: ${user.id}</p>
-                     </section>
+                     <p class="your-step-goal">Daily Step Goal: ${user.dailyStepGoal}</p>
                      <section class='step-goal'>
                      </section>
+                     <section class='friends-names'>Your friends:</section>
+                     </section>
+                     <button class="see-user-info"></button>
                      `
+const seeUserInfo = document.querySelector('.see-user-info')
+const userInfo = document.querySelector(".user-info")
+seeUserInfo.addEventListener('click', displayUserInfo)
+}
+
+function displayUserInfo() {
+  console.log(userInfo);
+  userInfo.classList.add('hide')
+  // users.innerHTML = `
+  // <section class="detailed-info hide">
+  //   <p>Address: ${user.address}</p>
+  //   <p>Email: ${user.email}</p>
+  //   <p>Stride Length: ${user.strideLength}</p>
+  //   <p>ID: ${user.id}</p>
+  //   </section>
+  //   `
 }
 function createFriendsList(user) {
 const friendsList = user.userFriends.map(friends => userRepo.getUserByID(friends))
@@ -43,7 +56,8 @@ function displayFriendsList(user) {
 function createStepGoal(user) {
   const stepGoal = document.querySelector('.step-goal')
   stepGoal.innerHTML =
-  `<p>${user.getFirstName()}'s goal is  ${user.dailyStepGoal} steps per day, and the average is  ${userRepo.getAverageStepGoal()} steps per day.
+  `
+  <!-- <p>${user.getFirstName()}'s goal is  ${user.dailyStepGoal} steps per day, and the average is  ${userRepo.getAverageStepGoal()} steps per day. -->
   <p class="ahead-or-behind"></p>`
 }
 
@@ -51,7 +65,7 @@ function compareStepGoal(user) {
   const difference = userRepo.getAverageStepGoal() - user.dailyStepGoal
   const absoluteValue = Math.abs(difference)
   const aheadOrBehind = document.querySelector('.ahead-or-behind')
-  difference > 0 ?  aheadOrBehind.innerText = `Your goal is ${absoluteValue} steps greater than the average!` : aheadOrBehind.innerText = `Your goal is ${absoluteValue} steps less than the average!`
+  difference < 0 ?  aheadOrBehind.innerText = `Your goal is ${absoluteValue} steps greater than the average!` : aheadOrBehind.innerText = `Your goal is ${absoluteValue} steps less than the average!`
 }
 
 function displayUserInfo(user) {
@@ -150,7 +164,6 @@ function displayStepChallenge(activity) {
 //   }
 //   return friendUsers
 // }
-
 
 
 
