@@ -87,16 +87,6 @@ class Activity {
     return activity
   }
 
-  // makeFriends(user) {
-  //   const friendsList = user.userFriends.map(friend => userRepo.getUserByID(friend))
-  //   const friendUsers = []
-  //   for (let i = 0 ; i < friendsList.length ; i++) {
-  //     this["newFriend"+i] = new User(friendsList[i])
-  //     friendUsers.push(this["newFriend"+i])
-  //   }
-  //   return friendUsers
-  // }
-
   getUserActivityData(activityInfo, user) {
     const currentUser = user || this.currentUser
     const activityData = activityInfo || this.activityData
