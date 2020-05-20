@@ -46,8 +46,8 @@ class Sleep {
     } else {
       return undefined
     }
-  } 
-  
+  }
+
   getOneUserWeekOfSleepData(date) {
     let sleeps = []
     let userSleepData = this.getUserSleepData()
@@ -58,7 +58,7 @@ class Sleep {
     }
     return sleeps
   }
-  
+
   getWeekofHoursSlept(date) {
     let userSleepData = this.getOneUserWeekOfSleepData(date)
     let sleeps = []
@@ -95,6 +95,7 @@ class Sleep {
 
   sortSleeps() {
     let userSleepData = this.sleepData
+    console.log('hi');
     return userSleepData.reduce((acc, entry) => {
     const userProfile = acc.find(profile => {
       return profile.userID === entry.userID
@@ -137,7 +138,7 @@ class Sleep {
       return obj
     })
     const sortedQuality = objData.sort((a, b) => b.sleepAverage - a.sleepAverage)
-    return sortedQuality.slice(0, 3) 
+    return sortedQuality.slice(0, 3)
   }
 
   getTopSleeper(date) {

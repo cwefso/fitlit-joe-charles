@@ -26,6 +26,9 @@ const showInfoCard = (user) => {
                      <section class='step-goal'>
                      </section>
                      <section class='friends-names'>Your friends:</section>
+                     <section class='besties'>
+                     <section class="step-leaders">Step Leaders:</section>
+                     </section>
                      </section>
                      <button class="see-user-info"><i class="far fa-user"></i></button>
                      <section class="detailed-info hide">
@@ -35,7 +38,42 @@ const showInfoCard = (user) => {
                      <p>ID: ${user.id}</p>
                      </section>
                      `
-                     createQuerySelector()
+}
+
+const getSleepersInfo = (sleep) => {
+  const bestSleepersID = sleep.getBestSleepers(todaysDate)
+  const topSleeperID = sleep.getTopSleeper(todaysDate)
+  const worstSleeperID = sleep.getWorstSleeper(todaysDate)
+  const bestSleeperNames = bestSleepersID.map(sleeper => userRepo.getUserByID(sleeper.userID).name.split(' ')[0])
+  const topSleeperName = userRepo.getUserByID(topSleeperID).name.split(' ')[0]
+  const worstSleeperName = userRepo.getUserByID(worstSleeperID).name.split(' ')[0]
+  displayBestSleepers(bestSleeperNames, topSleeperName, worstSleeperName)
+}
+
+const displayBestSleepers = (bestSleepers, topSleeper, worstSleeper) => {
+  const besties = document.querySelector(".besties")
+  besties.insertAdjacentHTML('beforeEnd', `<p>${bestSleepers[0]}got the best sleep this week.</p>`)
+  besties.insertAdjacentHTML('beforeEnd', `<p>${topSleeper} got the most sleep this week.</p>`)
+  besties.insertAdjacentHTML('beforeEnd', `<p>${worstSleeper} got the least sleep this week.</p>`)
+}
+
+const getStepLeaders = (activity) => {
+  const userFriends = activity.currentUser.userFriends
+  const friendsList = userFriends.map(friend => userRepo.getUserByID(friend))
+  const friendsData = activity.getFriendsData('', todaysDate, friendsList)
+  const stepLeaders = activity.getFriendsSteps(friendsData)
+  displayStepLeaders(stepLeaders)
+}
+
+const displayStepLeaders = (stepLeaders) => {
+  const stepLeadersDOM = document.querySelector(".step-leaders")
+  const sortedStepLeaders = stepLeaders.sort((a, b) => b.stepTotal - a.stepTotal)
+  const leaderNames = sortedStepLeaders.map(leader => userRepo.getUserByID(leader.id).name.split(' ')[0])
+  stepLeadersDOM.insertAdjacentHTML('beforeEnd', `<p>${leaderNames[0]} has ${sortedStepLeaders[0].stepTotal} steps.</p>
+                                           <p>${leaderNames[1]} has ${sortedStepLeaders[1].stepTotal} steps.</p>
+                                           <p>${leaderNames[2]} has ${sortedStepLeaders[2].stepTotal} steps.</p>
+                                          `)
+
 }
 
 const createQuerySelector = () => {
@@ -78,6 +116,7 @@ const compareStepGoal = (user) => {
 
 const displayUserInfo = (user) => {
   showInfoCard(user)
+  createQuerySelector()
   displayFriendsList(user)
   createStepGoal(user)
   compareStepGoal(user)
@@ -108,6 +147,7 @@ const showHydrationCard = (newHydration) => {
 const makeSleep = (user) => {
   let newSleep = new Sleep(sleepData, user)
   showSleepCard(newSleep)
+  getSleepersInfo(newSleep)
 }
 
 const showSleepCard = (newSleep) => {
@@ -131,6 +171,7 @@ const makeActivity = (user) => {
   let newActivity = new Activity(activityData, user)
   showActivityCard(newActivity, user)
   displayStepChallenge(newActivity)
+  getStepLeaders(newActivity)
 }
 
 const showActivityCard = (newActivity, user) => {
@@ -191,9 +232,3 @@ makeUser()
     //   }
     //   return friendUsers
     // }
-    
-    
-    
-    
-    
-

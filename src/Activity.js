@@ -114,12 +114,6 @@ class Activity {
       return friendInfo
     })
   }
-//Get friends from user.userFriends
-//forEach friend get a week of activity data(this is where I think they need to be new instances of user... or maybe activity?)
-//forEach friend add numSteps and give new key of weeksSteps : (total steps)
-//sort friends by weeksSteps
-//return .name of friend at index[0]
-
 }
 
 if (typeof module !== 'undefined') {
