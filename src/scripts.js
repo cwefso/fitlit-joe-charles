@@ -3,16 +3,19 @@ const users = document.querySelector('.users')
 const hydration = document.querySelector('.hydration')
 const sleep = document.querySelector('.sleep')
 const activity = document.querySelector('.activity')
+const button = document.querySelector('.set-date-button')
 var userRepo = new UserRepository(userData);
 var todaysDate = '2019/09/22'
+var thisUser = {}
 
 const makeUser = () => {
   const randomUser = Math.floor(Math.random() * userData.length)
-  const user = new User(userData[randomUser])
+  var user = new User(userData[randomUser])
   displayUserInfo(user)
   makeHydration(user)
   makeSleep(user)
   makeActivity(user)
+  thisUser = user
 }
 
 const showInfoCard = (user) => {
@@ -24,9 +27,7 @@ const showInfoCard = (user) => {
                      </section>
                      <section class='friends-names'>Your friends:</section>
                      </section>
-                     <button class="see-user-info"><i class="far fa-user"></i>
-
-</button>
+                     <button class="see-user-info"><i class="far fa-user"></i></button>
                      <section class="detailed-info hide">
                      <p>Address: ${user.address}</p>
                      <p>Email: ${user.email}</p>
@@ -90,18 +91,18 @@ const makeHydration = (user) => {
 const showHydrationCard = (newHydration) => {
   let weeksHydroData = newHydration.getWeekOfHydroData(todaysDate)
   hydration.innerHTML = `
-       <section class="hydration-data"><p>Hydration Average: ${newHydration.getAverageDailyOunces()} oz</p></section>
-       <section class="todays-hydration"><p>Todays Hydration: ${newHydration.getOuncesForSpecificDay(todaysDate)} oz</p></section>
-       <section class="weekly-hydration">
-       <p class="box-text">Yesterday's Hydration: ${weeksHydroData[1].numOunces} oz</p>
-       <p class="box-text">${weeksHydroData[2].date}: ${weeksHydroData[2].numOunces}oz</p>
-       <p class="box-text">${weeksHydroData[3].date}: ${weeksHydroData[3].numOunces}oz</p>
-       <p class="box-text">${weeksHydroData[4].date}: ${weeksHydroData[4].numOunces}oz</p>
-       <p class="box-text">${weeksHydroData[5].date}: ${weeksHydroData[5].numOunces}oz</p>
-       <p class="box-text">${weeksHydroData[6].date}: ${weeksHydroData[6].numOunces}oz</p>
-       <p class="box-text">${weeksHydroData[7].date}: ${weeksHydroData[7].numOunces}oz</p>
-       </section>
-       `
+  <section class="hydration-data"><p>Hydration Average: ${newHydration.getAverageDailyOunces()} oz</p></section>
+  <section class="todays-hydration"><p>Todays Hydration: ${newHydration.getOuncesForSpecificDay(todaysDate)} oz</p></section>
+  <section class="weekly-hydration">
+  <p class="box-text">Yesterday's Hydration: ${weeksHydroData[1].numOunces} oz</p>
+  <p class="box-text">${weeksHydroData[2].date}: ${weeksHydroData[2].numOunces}oz</p>
+  <p class="box-text">${weeksHydroData[3].date}: ${weeksHydroData[3].numOunces}oz</p>
+  <p class="box-text">${weeksHydroData[4].date}: ${weeksHydroData[4].numOunces}oz</p>
+  <p class="box-text">${weeksHydroData[5].date}: ${weeksHydroData[5].numOunces}oz</p>
+  <p class="box-text">${weeksHydroData[6].date}: ${weeksHydroData[6].numOunces}oz</p>
+  <p class="box-text">${weeksHydroData[7].date}: ${weeksHydroData[7].numOunces}oz</p>
+  </section>
+  `
 }
 
 const makeSleep = (user) => {
@@ -161,8 +162,38 @@ const displayStepChallenge = (activity) => {
   const allFriendsTotalSteps = activity.getFriendsSteps(userData)
 }
 
+button.addEventListener('click', setDate)
 
+function checkInput(data) {
+  var dates = sleepData.map(date => date.date)
+  if(!dates.includes(data)) {
+    alert("No Data!")
+  } else {
+    makeHydration(thisUser)
+    makeSleep(thisUser)
+    makeActivity(thisUser)
+  }
+}
 
-
+function setDate() {
+  input = document.getElementById('set-date').value
+  todaysDate = input
+  checkInput(input)
+}
 
 makeUser()
+// makeFriends(user) {
+  //   const friendsList = user.userFriends.map(friend => userRepo.getUserByID(friend))
+  //   const friendUsers = []
+  //   for (let i = 0 ; i < friendsList.length ; i++) {
+    //     this["newFriend"+i] = new User(friendsList[i])
+    //     friendUsers.push(this["newFriend"+i])
+    //   }
+    //   return friendUsers
+    // }
+    
+    
+    
+    
+    
+
