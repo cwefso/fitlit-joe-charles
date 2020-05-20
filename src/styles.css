@@ -250,6 +250,29 @@ p {
   width: 90%;
 }
 
+.see-user-info {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin-left: 35%;
+  background-color: #242423;
+  color: #fff;
+  background-image: url(images/profile.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 30px, 30px;
+  outline: none;
+  cursor: pointer;
+}
+
+.see-user-info:hover {
+  border: 1px solid rgb(92, 242, 99);
+}
+.see-user-info:focus {
+  border: 1px solid rgb(92, 242, 99);
+}
+
+
 .scripts {
   display: none;
 }

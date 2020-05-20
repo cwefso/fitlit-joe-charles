@@ -16,35 +16,44 @@ function makeUser() {
 }
 
 function showInfoCard(user) {
-  users.innerHTML = `<section class="user-info">
-                     <p class="welcome">Welcome Back ${user.getFirstName()}!</p>
+  users.innerHTML = `
+  <p class="welcome">Welcome Back ${user.getFirstName()}!</p>
+                     <section class="user-info">
                      <p class="your-step-goal">Daily Step Goal: ${user.dailyStepGoal}</p>
                      <section class='step-goal'>
                      </section>
                      <section class='friends-names'>Your friends:</section>
                      </section>
-                     <button class="see-user-info"></button>
+                     <button class="see-user-info"><i class="far fa-user"></i>
+
+</button>
+                     <section class="detailed-info hide">
+                     <p>Address: ${user.address}</p>
+                     <p>Email: ${user.email}</p>
+                     <p>Stride Length: ${user.strideLength}</p>
+                     <p>ID: ${user.id}</p>
+                     </section>
                      `
-const seeUserInfo = document.querySelector('.see-user-info')
-const userInfo = document.querySelector(".user-info")
-seeUserInfo.addEventListener('click', displayUserInfo)
+                     createQuerySelector()
 }
 
-function displayUserInfo() {
-  console.log(userInfo);
-  userInfo.classList.add('hide')
-  // users.innerHTML = `
-  // <section class="detailed-info hide">
-  //   <p>Address: ${user.address}</p>
-  //   <p>Email: ${user.email}</p>
-  //   <p>Stride Length: ${user.strideLength}</p>
-  //   <p>ID: ${user.id}</p>
-  //   </section>
-  //   `
+function createQuerySelector() {
+  const seeUserInfo = document.querySelector(".see-user-info")
+  seeUserInfo.addEventListener('click', displayDetailedUserInfo)
 }
+
+function displayDetailedUserInfo() {
+  const detialedUserInfo = document.querySelector(".detailed-info")
+  const userInfo = document.querySelector(".user-info")
+  const seeUserInfo = document.querySelector(".see-user-info")
+  detialedUserInfo.classList[1] === ('hide') ? seeUserInfo.style.backgroundImage = ("url(images/close.png)") : seeUserInfo.style.backgroundImage = ("url(images/profile.png)")
+  detialedUserInfo.classList.toggle('hide')
+  userInfo.classList.toggle('hide')
+}
+
 function createFriendsList(user) {
-const friendsList = user.userFriends.map(friends => userRepo.getUserByID(friends))
-return friendsList
+  const friendsList = user.userFriends.map(friends => userRepo.getUserByID(friends))
+  return friendsList
 }
 
 function displayFriendsList(user) {
@@ -56,9 +65,7 @@ function displayFriendsList(user) {
 function createStepGoal(user) {
   const stepGoal = document.querySelector('.step-goal')
   stepGoal.innerHTML =
-  `
-  <!-- <p>${user.getFirstName()}'s goal is  ${user.dailyStepGoal} steps per day, and the average is  ${userRepo.getAverageStepGoal()} steps per day. -->
-  <p class="ahead-or-behind"></p>`
+  `<p class="ahead-or-behind"></p>`
 }
 
 function compareStepGoal(user) {
@@ -155,15 +162,6 @@ function displayStepChallenge(activity) {
   const allFriendsTotalSteps = activity.getFriendsSteps(userData)
 }
 
-// makeFriends(user) {
-//   const friendsList = user.userFriends.map(friend => userRepo.getUserByID(friend))
-//   const friendUsers = []
-//   for (let i = 0 ; i < friendsList.length ; i++) {
-//     this["newFriend"+i] = new User(friendsList[i])
-//     friendUsers.push(this["newFriend"+i])
-//   }
-//   return friendUsers
-// }
 
 
 
