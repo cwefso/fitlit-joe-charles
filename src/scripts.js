@@ -6,7 +6,7 @@ const activity = document.querySelector('.activity')
 var userRepo = new UserRepository(userData);
 var todaysDate = '2019/09/22'
 
-function makeUser() {
+const makeUser = () => {
   const randomUser = Math.floor(Math.random() * userData.length)
   const user = new User(userData[randomUser])
   displayUserInfo(user)
@@ -15,7 +15,7 @@ function makeUser() {
   makeActivity(user)
 }
 
-function showInfoCard(user) {
+const showInfoCard = (user) => {
   users.innerHTML = `
   <p class="welcome">Welcome Back ${user.getFirstName()}!</p>
                      <section class="user-info">
@@ -37,12 +37,12 @@ function showInfoCard(user) {
                      createQuerySelector()
 }
 
-function createQuerySelector() {
+const createQuerySelector = () => {
   const seeUserInfo = document.querySelector(".see-user-info")
   seeUserInfo.addEventListener('click', displayDetailedUserInfo)
 }
 
-function displayDetailedUserInfo() {
+const displayDetailedUserInfo = () => {
   const detialedUserInfo = document.querySelector(".detailed-info")
   const userInfo = document.querySelector(".user-info")
   const seeUserInfo = document.querySelector(".see-user-info")
@@ -51,43 +51,43 @@ function displayDetailedUserInfo() {
   userInfo.classList.toggle('hide')
 }
 
-function createFriendsList(user) {
+const createFriendsList = (user) => {
   const friendsList = user.userFriends.map(friends => userRepo.getUserByID(friends))
   return friendsList
 }
 
-function displayFriendsList(user) {
+const displayFriendsList = (user) => {
   const friendsList = createFriendsList(user)
   const friendsNames = document.querySelector('.friends-names')
   friendsList.forEach(friend => friendsNames.insertAdjacentHTML('beforeEnd', `<p>${friend.name.split(' ')[0]}</p>`))
 }
 
-function createStepGoal(user) {
+const createStepGoal = (user) => {
   const stepGoal = document.querySelector('.step-goal')
   stepGoal.innerHTML =
   `<p class="ahead-or-behind"></p>`
 }
 
-function compareStepGoal(user) {
+const compareStepGoal = (user) => {
   const difference = userRepo.getAverageStepGoal() - user.dailyStepGoal
   const absoluteValue = Math.abs(difference)
   const aheadOrBehind = document.querySelector('.ahead-or-behind')
   difference < 0 ?  aheadOrBehind.innerText = `Your goal is ${absoluteValue} steps greater than the average!` : aheadOrBehind.innerText = `Your goal is ${absoluteValue} steps less than the average!`
 }
 
-function displayUserInfo(user) {
+const displayUserInfo = (user) => {
   showInfoCard(user)
   displayFriendsList(user)
   createStepGoal(user)
   compareStepGoal(user)
 }
 
-function makeHydration(user) {
+const makeHydration = (user) => {
   const newHydration = new Hydration(hydrationData, user)
   showHydrationCard(newHydration)
 }
 
-function showHydrationCard(newHydration) {
+const showHydrationCard = (newHydration) => {
   let weeksHydroData = newHydration.getWeekOfHydroData(todaysDate)
   hydration.innerHTML = `
        <section class="hydration-data"><p>Hydration Average: ${newHydration.getAverageDailyOunces()} oz</p></section>
@@ -104,12 +104,12 @@ function showHydrationCard(newHydration) {
        `
 }
 
-function makeSleep(user) {
+const makeSleep = (user) => {
   let newSleep = new Sleep(sleepData, user)
   showSleepCard(newSleep)
 }
 
-function showSleepCard(newSleep) {
+const showSleepCard = (newSleep) => {
   let weeksSleepData = newSleep.getOneUserWeekOfSleepData(todaysDate)
   sleep.innerHTML = `
   <section class="sleep-hours"><p>Hours Slept Average: ${newSleep.getAverageDailySleep()} hours</p><p>Sleep Quality Average: ${newSleep.getAverageSleepQuality()}</p></section>
@@ -126,13 +126,13 @@ function showSleepCard(newSleep) {
   `
 }
 
-function makeActivity(user) {
+const makeActivity = (user) => {
   let newActivity = new Activity(activityData, user)
   showActivityCard(newActivity, user)
   displayStepChallenge(newActivity)
 }
 
-function showActivityCard(newActivity, user) {
+const showActivityCard = (newActivity, user) => {
   let weeksActivityData = newActivity.getOneUserWeekOfActivityData(todaysDate)
   activity.innerHTML = `
   <section class="activity-miles"><p>Today's Miles Walked: ${newActivity.getMilesWalkedToday(todaysDate)} miles</p></section>
@@ -153,10 +153,9 @@ function showActivityCard(newActivity, user) {
   <p class="box-text">${weeksActivityData[7].date}: Steps: ${weeksActivityData[7].numSteps} Minutes Active: ${weeksActivityData[7].minutesActive} Flights Of Stairs: ${weeksActivityData[7].flightsOfStairs}</p>
   </section>
   `
-  // newActivity.getFriendsData(user, todaysDate)
 }
 
-function displayStepChallenge(activity) {
+const displayStepChallenge = (activity) => {
   const friendsList = createFriendsList(activity.currentUser)
   const userData = activity.getFriendsData('', todaysDate, friendsList)
   const allFriendsTotalSteps = activity.getFriendsSteps(userData)
