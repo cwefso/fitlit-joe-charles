@@ -3,12 +3,9 @@ const users = document.querySelector('.users')
 const hydration = document.querySelector('.hydration')
 const sleep = document.querySelector('.sleep')
 const activity = document.querySelector('.activity')
-// const button = document.querySelector('.set-date-button')
 var userRepo = new UserRepository(userData);
 var todaysDate = '2019/09/22'
 var thisUser = {}
-
-button.addEventListener('click', setDate)
 
 const makeUser = () => {
   const randomUser = Math.floor(Math.random() * userData.length)
