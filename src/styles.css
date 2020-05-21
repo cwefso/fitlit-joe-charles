@@ -9,13 +9,22 @@ html {
   /* background-color: #FFE066; */
 }
 
+ul {
+  text-align: left;
+}
+
+li {
+  margin: 5px;
+}
+
 body {
   all: unset;
   background-color: #242423;
   font-family: 'Open Sans', sans-serif;
   max-height: 100vh;
   min-height: 100vh;
-  place-items: center;  /* align-items: center; */
+  place-items: center;
+  font-size: 16px  /* align-items: center; */
 }
 
 h1 {
@@ -25,10 +34,6 @@ h1 {
   height: 11%;
   margin: 0;
   text-align: center;
-}
-
-p {
-  padding: 1%, 2%, 1%, 2%;
 }
 
 .content {
@@ -66,7 +71,6 @@ p {
   color: #fff;
   display: flex;
   flex-direction: column;
-  font-size: 12px;
   grid-area: 1 / 1 / 21 / 5;
   text-align: center;
   height: 100%;
@@ -79,7 +83,6 @@ p {
   color: #fff;
   display: flex;
   flex-direction: column;
-  font-size: 8px;
   justify-content: space-evenly;
   height: auto;
 }
@@ -104,150 +107,65 @@ p {
 }
 
 .hydration {
-  align-items: center;
+  align-items: left;
   background-color: #242423;
   color: #fff;
   display: flex;
   flex-direction: column;
-  font-size: 8px;
   grid-area: 1 / 6 / 11 / 9;
   justify-content: space-evenly;
   height: auto;
 }
 
-.hydration-data {
+.hydration-card {
   border: 1px solid #70C1B3;
   border-radius: 5px;
   box-shadow: 0px 0px 10px -5px #fff;
   height: auto;
-  text-align: center;
   width: 90%;
+  padding: 20px;
 }
-
-.todays-hydration {
-  border: 1px solid #70C1B3;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px -5px #fff;
-  height: auto;
-  text-align: center;
-  width: 90%;
-}
-
-.weekly-hydration {
-  border: 1px solid #70C1B3;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px -5px #fff;
-  height: auto;
-  text-align: center;
-  width: 90%;
-}
-
 
 .sleep {
-  align-items: center;
+  align-items: left;
   background-color: #242423;
   color: #fff;
   display: flex;
   flex-direction: column;
-  font-size: 8px;
   grid-area: 1 / 10 / 11 / 13;
   justify-content: space-evenly;
   flex-wrap: wrap;
   height: auto;
 }
 
-.sleep-data {
+.sleep-card {
   border: 1px solid #F25F5C;
   border-radius: 5px;
   box-shadow: 0px 0px 10px -5px #fff;
   height: auto;
-  text-align: center;
-  width: 90%;
-}
-
-.sleep-hours {
-  border: 1px solid #F25F5C;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px -5px #fff;
-  height: auto;
-  text-align: center;
-  width: 90%;
-}
-
-.sleep-quality {
-  border: 1px solid #F25F5C;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px -5px #fff;
-  height: auto;
-  text-align: center;
-  width: 90%;
-}
-
-.weekly-sleep {
-  border: 1px solid #F25F5C;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px -5px #fff;
-  height: auto;
-  text-align: center;
-  width: 90%;
+  width : 100%
+  padding: 20px;
 }
 
 .activity {
-  align-items: center;
+  align-items: left;
   background-color: #242423;
   color: #fff;
   display: flex;
   flex-direction: column;
-  font-size: 8px;
   grid-area: 1 / 14 / 11 / 21;
   justify-content: space-evenly;
   flex-wrap: wrap;
   height: auto;
 }
 
-.activity-data {
+.activity-card {
   border: 1px solid #FFE066;
   border-radius: 5px;
   box-shadow: 0px 0px 10px -5px #fff;
   height: auto;
-  text-align: center;
   width: 90%;
-}
-
-.activity-miles {
-  border: 1px solid #FFE066;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px -5px #fff;
-  height: auto;
-  text-align: center;
-  width: 90%;
-}
-
-.activity-minutes {
-  border: 1px solid #FFE066;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px -5px #fff;
-  height: auto;
-  text-align: center;
-  width: 90%;
-}
-
-.activity-steps {
-  border: 1px solid #FFE066;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px -5px #fff;
-  height: auto;
-  text-align: center;
-  width: 90%;
-}
-
-.activity-compare {
-  border: 1px solid #FFE066;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px -5px #fff;
-  height: auto;
-  text-align: center;
-  width: 90%;
+  padding: 20px;
 }
 
 .see-user-info {
@@ -272,7 +190,6 @@ p {
   border: 1px solid rgb(92, 242, 99);
 }
 
-
 .scripts {
   display: none;
 }
@@ -280,3 +197,5 @@ p {
 .hide {
   display: none;
 }
+
+
