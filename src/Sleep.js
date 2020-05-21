@@ -46,8 +46,8 @@ class Sleep {
     } else {
       return undefined
     }
-  } 
-  
+  }
+
   getOneUserWeekOfSleepData(date) {
     let sleeps = []
     let userSleepData = this.getUserSleepData()
@@ -58,7 +58,7 @@ class Sleep {
     }
     return sleeps
   }
-  
+
   getWeekofHoursSlept(date) {
     let userSleepData = this.getOneUserWeekOfSleepData(date)
     let sleeps = []
@@ -137,7 +137,7 @@ class Sleep {
       return obj
     })
     const sortedQuality = objData.sort((a, b) => b.sleepAverage - a.sleepAverage)
-    return sortedQuality.slice(0, 3) 
+    return sortedQuality.slice(0, 3)
   }
 
   getTopSleeper(date) {

@@ -45,6 +45,9 @@ h1 {
 
 .ahead-or-behind {
   padding: 1%, 2%, 1%, 2%;
+  background-image: linear-gradient( #F25F5C, rgb(92, 242, 99));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .box-text {
@@ -82,14 +85,64 @@ h1 {
 
 .friends-names, .friend {
   font-size: 12px;
+  background-image: linear-gradient( #F25F5C, rgb(92, 242, 99));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .your-step-goal {
   font-size: 12px;
+  background-image: linear-gradient( #F25F5C, rgb(92, 242, 99));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .welcome {
   font-size: 18px;
+  animation: shimmy 2s linear 3;
+  margin-bottom: 1px;
+  background-image: linear-gradient( #F25F5C, rgb(92, 242, 99));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes shimmy {
+
+  10% {
+  transform: rotate(.007turn);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  }
+  20% {
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  30% {
+    transform: rotate(-.007turn);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  40% {
+  transform: rotate(.007turn);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;  }
+  50% {
+  transform: rotate(.007turn);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;  }
+  60% {
+    transform: rotate(-.007turn);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;  }
+  70% {
+    transform: rotate(0turn);
+  }
 }
 
 .step-goal {
@@ -166,14 +219,30 @@ h1 {
   width: auto;
 }
 
+.leaders {
+  background-image: linear-gradient( #F25F5C, rgb(92, 242, 99));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 5%;
+}
+
+.leaders-info {
+  font-size: 10px;
+}
+
 .see-user-info {
+  height: 30px;
+  display: inline;
+  width: 30px;
+  border-radius: 50%;
+  margin-right: 5%;
   background-color: #242423;
   background-image: url(images/profile.png);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 30px, 30px;
-  border-radius: 50%;
+  background-size: 20px, 20px;
   color: #fff;
+  outline: none;
   cursor: pointer;
   height: 50px;
   margin-left: 35%;
@@ -186,6 +255,67 @@ h1 {
 }
 .see-user-info:focus {
   border: 1px solid rgb(92, 242, 99);
+}
+
+.see-leaders-btn {
+  height: 30px;
+  display: inline;
+  width: 30px;
+  border-radius: 50%;
+  margin-left: 5%;
+  background-color: #242423;
+  color: #fff;
+  background-image: url(images/info.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 20px, 20px;
+  outline: none;
+  cursor: pointer;
+}
+
+.see-leaders-btn:hover {
+  border: 1px solid rgb(92, 242, 99);
+}
+.see-leaders-btn:focus {
+  border: 1px solid rgb(92, 242, 99);
+}
+
+#set-date {
+  color: #fff;
+  padding: 5%;
+  font-size: 8px;
+  background-color: #242423;
+  margin-top: 5%;
+  width: 80%;
+  border: 1px solid #333533;
+}
+
+#set-date:hover {
+  border: 1px solid rgb(92, 242, 99);
+  outline: none;
+}
+#set-date:focus {
+  border: 1px solid rgb(92, 242, 99);
+  outline: none;
+}
+
+.set-date-button {
+  color: #fff;
+  font-size: 8px;
+  background-color: #242423;
+  height: 20%;
+  width: 86.5%;
+  border: 1px solid #333533;
+  padding: 1%;
+}
+
+.set-date-button:hover {
+  border: 1px solid rgb(92, 242, 99);
+  outline: none;
+}
+.set-date-button:focus {
+  border: 1px solid rgb(92, 242, 99);
+  outline: none;
 }
 
 .scripts {
