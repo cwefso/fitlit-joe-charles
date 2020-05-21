@@ -2,11 +2,18 @@ const users = document.querySelector('.users')
 const hydration = document.querySelector('.hydration')
 const sleep = document.querySelector('.sleep')
 const activity = document.querySelector('.activity')
+<<<<<<< HEAD
 const userRepo = new UserRepository(userData);
 let todaysDate = '2019/09/22'
 let thisUser = {}
 
 
+=======
+var userRepo = new UserRepository(userData);
+var todaysDate = '2019/09/22'
+var thisUser = {}
+
+>>>>>>> 6e41d4b69e4c7a16e5e824385cd5b4e851d8cc15
 const makeUser = () => {
   const randomUser = Math.floor(Math.random() * userData.length)
   const user = new User(userData[randomUser])
