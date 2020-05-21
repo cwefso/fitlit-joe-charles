@@ -95,7 +95,6 @@ class Sleep {
 
   sortSleeps() {
     let userSleepData = this.sleepData
-    console.log('hi');
     return userSleepData.reduce((acc, entry) => {
     const userProfile = acc.find(profile => {
       return profile.userID === entry.userID

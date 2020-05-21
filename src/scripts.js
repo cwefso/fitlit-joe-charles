@@ -3,7 +3,7 @@ const users = document.querySelector('.users')
 const hydration = document.querySelector('.hydration')
 const sleep = document.querySelector('.sleep')
 const activity = document.querySelector('.activity')
-const button = document.querySelector('.set-date-button')
+// const button = document.querySelector('.set-date-button')
 var userRepo = new UserRepository(userData);
 var todaysDate = '2019/09/22'
 var thisUser = {}
@@ -13,8 +13,8 @@ const makeUser = () => {
   var user = new User(userData[randomUser])
   displayUserInfo(user)
   makeHydration(user)
-  makeSleep(user)
   makeActivity(user)
+  makeSleep(user)
   thisUser = user
 }
 
@@ -26,17 +26,20 @@ const showInfoCard = (user) => {
                      <section class='step-goal'>
                      </section>
                      <section class='friends-names'>Your friends:</section>
-                     <section class='besties'>
-                     <section class="step-leaders">Step Leaders:</section>
                      </section>
+                     <section>
+                     <button class="see-user-info"></button>
+                     <button class="see-leaders-btn"></button>
+                     <input type="text" name="set-date" id="set-date" placeholder="YYYY/MM/DD"></input>
+                     <button class="set-date-button">Search</button>
                      </section>
-                     <button class="see-user-info"><i class="far fa-user"></i></button>
                      <section class="detailed-info hide">
                      <p>Address: ${user.address}</p>
                      <p>Email: ${user.email}</p>
                      <p>Stride Length: ${user.strideLength}</p>
                      <p>ID: ${user.id}</p>
                      </section>
+                     <section class="leaders hide">Step Leaders:</section>
                      `
 }
 
@@ -51,10 +54,10 @@ const getSleepersInfo = (sleep) => {
 }
 
 const displayBestSleepers = (bestSleepers, topSleeper, worstSleeper) => {
-  const besties = document.querySelector(".besties")
-  besties.insertAdjacentHTML('beforeEnd', `<p>${bestSleepers[0]}got the best sleep this week.</p>`)
-  besties.insertAdjacentHTML('beforeEnd', `<p>${topSleeper} got the most sleep this week.</p>`)
-  besties.insertAdjacentHTML('beforeEnd', `<p>${worstSleeper} got the least sleep this week.</p>`)
+  const besties = document.querySelector(".leaders")
+  besties.insertAdjacentHTML('beforeend', `<p class="leaders-info">${bestSleepers[0]} got the best sleep this week.</p>`)
+  besties.insertAdjacentHTML('beforeend', `<p class="leaders-info">${topSleeper} got the most sleep this week.</p>`)
+  besties.insertAdjacentHTML('beforeend', `<p class="leaders-info">${worstSleeper} got the least sleep this week.</p>`)
 }
 
 const getStepLeaders = (activity) => {
@@ -66,12 +69,12 @@ const getStepLeaders = (activity) => {
 }
 
 const displayStepLeaders = (stepLeaders) => {
-  const stepLeadersDOM = document.querySelector(".step-leaders")
+  const stepLeadersDOM = document.querySelector(".leaders")
   const sortedStepLeaders = stepLeaders.sort((a, b) => b.stepTotal - a.stepTotal)
   const leaderNames = sortedStepLeaders.map(leader => userRepo.getUserByID(leader.id).name.split(' ')[0])
-  stepLeadersDOM.insertAdjacentHTML('beforeEnd', `<p>${leaderNames[0]} has ${sortedStepLeaders[0].stepTotal} steps.</p>
-                                           <p>${leaderNames[1]} has ${sortedStepLeaders[1].stepTotal} steps.</p>
-                                           <p>${leaderNames[2]} has ${sortedStepLeaders[2].stepTotal} steps.</p>
+  stepLeadersDOM.insertAdjacentHTML('beforeend', `<p class="leaders-info">${leaderNames[0]} has ${sortedStepLeaders[0].stepTotal} steps.</p>
+                                           <p class="leaders-info">${leaderNames[1]} has ${sortedStepLeaders[1].stepTotal} steps.</p>
+                                           <p class="leaders-info">${leaderNames[2]} has ${sortedStepLeaders[2].stepTotal} steps.</p>
                                           `)
 
 }
@@ -82,12 +85,14 @@ const createQuerySelector = () => {
 }
 
 const displayDetailedUserInfo = () => {
+  const stepLeadersBTN = document.querySelector(".see-leaders-btn")
   const detialedUserInfo = document.querySelector(".detailed-info")
   const userInfo = document.querySelector(".user-info")
   const seeUserInfo = document.querySelector(".see-user-info")
   detialedUserInfo.classList[1] === ('hide') ? seeUserInfo.style.backgroundImage = ("url(images/close.png)") : seeUserInfo.style.backgroundImage = ("url(images/profile.png)")
   detialedUserInfo.classList.toggle('hide')
   userInfo.classList.toggle('hide')
+  stepLeadersBTN.classList.toggle('hide')
 }
 
 const createFriendsList = (user) => {
@@ -99,6 +104,21 @@ const displayFriendsList = (user) => {
   const friendsList = createFriendsList(user)
   const friendsNames = document.querySelector('.friends-names')
   friendsList.forEach(friend => friendsNames.insertAdjacentHTML('beforeEnd', `<p>${friend.name.split(' ')[0]}</p>`))
+}
+
+const createLeadersQuerySelector = () => {
+  const stepLeadersBTN = document.querySelector(".see-leaders-btn")
+  stepLeadersBTN.addEventListener('click', displayLeadersInfo)
+}
+
+const displayLeadersInfo = () => {
+  const seeUserInfo = document.querySelector(".see-user-info")
+  const stepLeadersDOM = document.querySelector(".leaders")
+  const userInfo = document.querySelector(".user-info")
+  seeUserInfo.classList.toggle('hide')
+  stepLeadersDOM.classList.toggle('hide')
+  userInfo.classList.toggle('hide')
+
 }
 
 const createStepGoal = (user) => {
@@ -116,7 +136,9 @@ const compareStepGoal = (user) => {
 
 const displayUserInfo = (user) => {
   showInfoCard(user)
+  createSelectDateQuerySelector()
   createQuerySelector()
+  createLeadersQuerySelector()
   displayFriendsList(user)
   createStepGoal(user)
   compareStepGoal(user)
@@ -202,8 +224,10 @@ const displayStepChallenge = (activity) => {
   const userData = activity.getFriendsData('', todaysDate, friendsList)
   const allFriendsTotalSteps = activity.getFriendsSteps(userData)
 }
-
-button.addEventListener('click', setDate)
+const createSelectDateQuerySelector = () => {
+  const button = document.querySelector('.set-date-button')
+  button.addEventListener('click', setDate)
+}
 
 function checkInput(data) {
   var dates = sleepData.map(date => date.date)
