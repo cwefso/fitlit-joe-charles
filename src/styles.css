@@ -3,10 +3,14 @@ html {
   height: 100%;
   max-height: 100%;
   min-height: 100%;
-  /* background-color: #333533; */
-  /* background-color: #70C1B3; */
-  /* background-color: #F25F5C; */
-  /* background-color: #FFE066; */
+}
+
+ul {
+  text-align: left;
+}
+
+li {
+  margin: 5px;
 }
 
 body {
@@ -15,7 +19,8 @@ body {
   font-family: 'Open Sans', sans-serif;
   max-height: 100vh;
   min-height: 100vh;
-  place-items: center;  /* align-items: center; */
+  place-items: center;
+  font-size: 16px 
 }
 
 h1 {
@@ -25,10 +30,6 @@ h1 {
   height: 11%;
   margin: 0;
   text-align: center;
-}
-
-p {
-  padding: 1%, 2%, 1%, 2%;
 }
 
 .content {
@@ -54,34 +55,29 @@ p {
   background-color: #242423;
   color: #fff;
   font-size: 24px;
-  grid-area: 1 / 6 / 2 / 21;
   text-align: center;
 }
 
 .users {
   background-color: #242423;
   border-right: 1px solid #333533;
-  /* border-radius: 5px; */
-  /* box-shadow: 0px 0px 10px -5px #fff; */
   color: #fff;
   display: flex;
   flex-direction: column;
-  font-size: 12px;
   grid-area: 1 / 1 / 21 / 5;
-  text-align: center;
   height: 100%;
+  text-align: center;
 }
 
 .user-info {
-  border-radius: 5px;
   align-items: center;
   background-color: #242423;
+  border-radius: 5px;
   color: #fff;
   display: flex;
   flex-direction: column;
-  font-size: 8px;
-  justify-content: space-evenly;
   height: auto;
+  justify-content: space-evenly;
 }
 
 .friends-names, .friend {
@@ -99,170 +95,85 @@ p {
 .step-goal {
   background-color: #242423;
   border-radius: 5px;
-  font-size: 12px;
   color: rgb(92, 242, 99);
+  font-size: 12px;
 }
 
 .hydration {
-  align-items: center;
+  align-items: left;
   background-color: #242423;
   color: #fff;
   display: flex;
   flex-direction: column;
-  font-size: 8px;
   grid-area: 1 / 6 / 11 / 9;
+  height: auto;
   justify-content: space-evenly;
-  height: auto;
 }
 
-.hydration-data {
-  border: 1px solid #70C1B3;
+.hydration-card {
   border-radius: 5px;
+  border: 1px solid #70C1B3;
   box-shadow: 0px 0px 10px -5px #fff;
   height: auto;
-  text-align: center;
+  padding: 20px;
   width: 90%;
 }
-
-.todays-hydration {
-  border: 1px solid #70C1B3;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px -5px #fff;
-  height: auto;
-  text-align: center;
-  width: 90%;
-}
-
-.weekly-hydration {
-  border: 1px solid #70C1B3;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px -5px #fff;
-  height: auto;
-  text-align: center;
-  width: 90%;
-}
-
 
 .sleep {
-  align-items: center;
+  align-items: left;
   background-color: #242423;
   color: #fff;
   display: flex;
   flex-direction: column;
-  font-size: 8px;
-  grid-area: 1 / 10 / 11 / 13;
-  justify-content: space-evenly;
   flex-wrap: wrap;
+  grid-area: 1 / 10 / 11 / 13;
   height: auto;
+  justify-content: space-evenly;
 }
 
-.sleep-data {
+.sleep-card {
   border: 1px solid #F25F5C;
   border-radius: 5px;
   box-shadow: 0px 0px 10px -5px #fff;
   height: auto;
-  text-align: center;
-  width: 90%;
-}
-
-.sleep-hours {
-  border: 1px solid #F25F5C;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px -5px #fff;
-  height: auto;
-  text-align: center;
-  width: 90%;
-}
-
-.sleep-quality {
-  border: 1px solid #F25F5C;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px -5px #fff;
-  height: auto;
-  text-align: center;
-  width: 90%;
-}
-
-.weekly-sleep {
-  border: 1px solid #F25F5C;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px -5px #fff;
-  height: auto;
-  text-align: center;
-  width: 90%;
+  padding: 20px;
+  width : 100%
 }
 
 .activity {
-  align-items: center;
+  align-items: left;
   background-color: #242423;
   color: #fff;
   display: flex;
   flex-direction: column;
-  font-size: 8px;
-  grid-area: 1 / 14 / 11 / 21;
-  justify-content: space-evenly;
   flex-wrap: wrap;
+  grid-area: 1 / 14 / 11 / 21;
   height: auto;
+  justify-content: space-evenly;
 }
 
-.activity-data {
-  border: 1px solid #FFE066;
+.activity-card {
   border-radius: 5px;
+  border: 1px solid #FFE066;
   box-shadow: 0px 0px 10px -5px #fff;
   height: auto;
-  text-align: center;
-  width: 90%;
-}
-
-.activity-miles {
-  border: 1px solid #FFE066;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px -5px #fff;
-  height: auto;
-  text-align: center;
-  width: 90%;
-}
-
-.activity-minutes {
-  border: 1px solid #FFE066;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px -5px #fff;
-  height: auto;
-  text-align: center;
-  width: 90%;
-}
-
-.activity-steps {
-  border: 1px solid #FFE066;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px -5px #fff;
-  height: auto;
-  text-align: center;
-  width: 90%;
-}
-
-.activity-compare {
-  border: 1px solid #FFE066;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px -5px #fff;
-  height: auto;
-  text-align: center;
+  padding: 20px;
   width: 90%;
 }
 
 .see-user-info {
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-  margin-left: 35%;
   background-color: #242423;
-  color: #fff;
   background-image: url(images/profile.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: 30px, 30px;
-  outline: none;
+  border-radius: 50%;
+  color: #fff;
   cursor: pointer;
+  height: 50px;
+  margin-left: 35%;
+  outline: none;
+  width: 50px;
 }
 
 .see-user-info:hover {
@@ -272,7 +183,6 @@ p {
   border: 1px solid rgb(92, 242, 99);
 }
 
-
 .scripts {
   display: none;
 }
@@ -280,3 +190,5 @@ p {
 .hide {
   display: none;
 }
+
+
