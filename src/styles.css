@@ -3,10 +3,6 @@ html {
   height: 100%;
   max-height: 100%;
   min-height: 100%;
-  /* background-color: #333533; */
-  /* background-color: #70C1B3; */
-  /* background-color: #F25F5C; */
-  /* background-color: #FFE066; */
 }
 
 ul {
@@ -24,7 +20,7 @@ body {
   max-height: 100vh;
   min-height: 100vh;
   place-items: center;
-  font-size: 16px  /* align-items: center; */
+  font-size: 16px 
 }
 
 h1 {
@@ -59,32 +55,29 @@ h1 {
   background-color: #242423;
   color: #fff;
   font-size: 24px;
-  grid-area: 1 / 6 / 2 / 21;
   text-align: center;
 }
 
 .users {
   background-color: #242423;
   border-right: 1px solid #333533;
-  /* border-radius: 5px; */
-  /* box-shadow: 0px 0px 10px -5px #fff; */
   color: #fff;
   display: flex;
   flex-direction: column;
   grid-area: 1 / 1 / 21 / 5;
-  text-align: center;
   height: 100%;
+  text-align: center;
 }
 
 .user-info {
-  border-radius: 5px;
   align-items: center;
   background-color: #242423;
+  border-radius: 5px;
   color: #fff;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   height: auto;
+  justify-content: space-evenly;
 }
 
 .friends-names, .friend {
@@ -102,8 +95,8 @@ h1 {
 .step-goal {
   background-color: #242423;
   border-radius: 5px;
-  font-size: 12px;
   color: rgb(92, 242, 99);
+  font-size: 12px;
 }
 
 .hydration {
@@ -113,17 +106,17 @@ h1 {
   display: flex;
   flex-direction: column;
   grid-area: 1 / 6 / 11 / 9;
-  justify-content: space-evenly;
   height: auto;
+  justify-content: space-evenly;
 }
 
 .hydration-card {
-  border: 1px solid #70C1B3;
   border-radius: 5px;
+  border: 1px solid #70C1B3;
   box-shadow: 0px 0px 10px -5px #fff;
   height: auto;
-  width: 90%;
   padding: 20px;
+  width: 90%;
 }
 
 .sleep {
@@ -132,10 +125,10 @@ h1 {
   color: #fff;
   display: flex;
   flex-direction: column;
-  grid-area: 1 / 10 / 11 / 13;
-  justify-content: space-evenly;
   flex-wrap: wrap;
+  grid-area: 1 / 10 / 11 / 13;
   height: auto;
+  justify-content: space-evenly;
 }
 
 .sleep-card {
@@ -143,8 +136,8 @@ h1 {
   border-radius: 5px;
   box-shadow: 0px 0px 10px -5px #fff;
   height: auto;
-  width : 100%
   padding: 20px;
+  width : 100%
 }
 
 .activity {
@@ -153,34 +146,34 @@ h1 {
   color: #fff;
   display: flex;
   flex-direction: column;
-  grid-area: 1 / 14 / 11 / 21;
-  justify-content: space-evenly;
   flex-wrap: wrap;
+  grid-area: 1 / 14 / 11 / 21;
   height: auto;
+  justify-content: space-evenly;
 }
 
 .activity-card {
-  border: 1px solid #FFE066;
   border-radius: 5px;
+  border: 1px solid #FFE066;
   box-shadow: 0px 0px 10px -5px #fff;
   height: auto;
-  width: 90%;
   padding: 20px;
+  width: 90%;
 }
 
 .see-user-info {
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-  margin-left: 35%;
   background-color: #242423;
-  color: #fff;
   background-image: url(images/profile.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: 30px, 30px;
-  outline: none;
+  border-radius: 50%;
+  color: #fff;
   cursor: pointer;
+  height: 50px;
+  margin-left: 35%;
+  outline: none;
+  width: 50px;
 }
 
 .see-user-info:hover {
