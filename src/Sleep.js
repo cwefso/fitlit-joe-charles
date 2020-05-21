@@ -63,9 +63,9 @@ class Sleep {
     let userSleepData = this.getOneUserWeekOfSleepData(date)
     let sleeps = []
     userSleepData.forEach((night) => {
-       if(night !== undefined) {
-          sleeps.push(night.hoursSlept)
-       }
+      if (night !== undefined) {
+        sleeps.push(night.hoursSlept)
+      }
     })
     return sleeps
   }
@@ -75,9 +75,9 @@ class Sleep {
     let userSleepData = this.getOneUserWeekOfSleepData(date)
     let sleeps = []
     userSleepData.forEach((night) => {
-       if(night !== undefined) {
-          sleeps.push(night.sleepQuality)
-       }
+      if (night !== undefined) {
+        sleeps.push(night.sleepQuality)
+      }
     })
     return sleeps
   }
@@ -96,17 +96,17 @@ class Sleep {
   sortSleeps() {
     let userSleepData = this.sleepData
     return userSleepData.reduce((acc, entry) => {
-    const userProfile = acc.find(profile => {
-      return profile.userID === entry.userID
-    })
-    const newEntry = {date: entry.date, hoursSlept: entry.hoursSlept, sleepQuality: entry.sleepQuality}
-    if (userProfile) {
-      userProfile.entries.push(newEntry)
-    } else {
-      const newUserProfile = {userID: entry.userID, entries: [newEntry]}
-      acc.push(newUserProfile)
-    }
-    return acc
+      const userProfile = acc.find(profile => {
+        return profile.userID === entry.userID
+      })
+      const newEntry = {date: entry.date, hoursSlept: entry.hoursSlept, sleepQuality: entry.sleepQuality}
+      if (userProfile) {
+        userProfile.entries.push(newEntry)
+      } else {
+        const newUserProfile = {userID: entry.userID, entries: [newEntry]}
+        acc.push(newUserProfile)
+      }
+      return acc
     }, [])
   }
 
