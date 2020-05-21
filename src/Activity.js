@@ -38,7 +38,7 @@ class Activity {
     const userActivityData = this.getUserActivityData()
     const todaysActivity = this.getUserActivityToday(specifiedDate)
     const startIndex = userActivityData.indexOf(todaysActivity)
-    for (let i = 0; i < 7 ; i++) {
+    for (let i = 0; i < 7; i++) {
       weeksActivity.push(userActivityData[startIndex - i])
     }
     return weeksActivity
@@ -104,7 +104,7 @@ class Activity {
     return friendsData.map(friend => {
       const friendInfo = {}
       friend.reduce((acc, stepData) => {
-        if(friendInfo.id !== stepData.userID) {
+        if (friendInfo.id !== stepData.userID) {
           friendInfo.id = stepData.userID
         }
         acc += stepData.numSteps

@@ -188,7 +188,16 @@ describe('Hydration', function() {
     expect(hydration.currentUser).to.deep.equal(user1)
   })
   it('should be able to get a users hydration data', function() {
-    expect(hydration.getUserHydrationData()).to.deep.equal([hydrationData[0], hydrationData[3], hydrationData[6], hydrationData[9], hydrationData[12], hydrationData[15], hydrationData[18], hydrationData[21]])
+    expect(hydration.getUserHydrationData()).to.deep.equal([
+      hydrationData[0],
+      hydrationData[3],
+      hydrationData[6],
+      hydrationData[9],
+      hydrationData[12],
+      hydrationData[15],
+      hydrationData[18],
+      hydrationData[21]
+    ])
   })
   it('should be able to get users average daily ounces', function() {
     expect(hydration.getAverageDailyOunces()).to.equal(62)

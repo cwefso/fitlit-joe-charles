@@ -2,13 +2,11 @@ const chai = require('chai')
 const expect = chai.expect
 const Activity = require('../src/Activity')
 const User = require('../src/User')
-const UserRepository = require('../src/UserRepository')
 
 let activity
 let activity2
-let user
-let userRepo
-activityData = [
+let user1
+let activityData = [
   {
     "userID": 1,
     "date": "2019/06/15",
@@ -193,7 +191,7 @@ activityData = [
     "flightsOfStairs": 32
   }
 ]
-activityData2 = [
+let activityData2 = [
   {
     "userID": 1,
     "date": "2019/06/15",
@@ -290,10 +288,8 @@ let userData = [
 ]
 
 beforeEach(function() {
-  userRepo = new UserRepository(userData)
   user1 = new User(userData[0])
   activity = new Activity(activityData, user1, userData, '2019/09/22')
-  user2 = new User(userData[0])
   activity2 = new Activity(activityData2, user1, userData, '2019/06/17')
 })
 
@@ -348,10 +344,21 @@ describe('Activity', function() {
     expect(activity2.getUserActivityMinutes('2019/06/16')).to.equal(175)
   })
   it('should return how many minutes the user was active for a given week', function() {
-    expect(activity.getWeekActiveMinutesAverage('2019/06/17')).to.deep.equal([activityData[6], activityData[3], activityData[0], undefined, undefined, undefined, undefined])
+    expect(activity.getWeekActiveMinutesAverage('2019/06/17')).to.deep.equal([
+      activityData[6],
+      activityData[3],
+      activityData[0],
+      undefined, undefined, undefined, undefined
+    ])
   })
   it('if a date argument is not passed in it should default to todays date', function() {
-    expect(activity.getWeekActiveMinutesAverage()).to.deep.equal([activityData[9], activityData[6], activityData[3], activityData[0], undefined, undefined, undefined])
+    expect(activity.getWeekActiveMinutesAverage()).to.deep.equal([
+      activityData[9],
+      activityData[6],
+      activityData[3],
+      activityData[0],
+      undefined, undefined, undefined
+    ])
   })
   it('should return true if the user has reached their step goal for the day', function() {
     expect(activity.getWasStepGoalAchieved('2019/06/17')).to.equal(true)
@@ -384,8 +391,26 @@ describe('Activity', function() {
     expect(activity2.getAveragesForAll('', 'minutesActive')).to.equal(65)
   })
   it('should be able to get the users friends', function() {
-    let thing = activity.getFriendsData(user1, "2019/06/15", [userData[1], userData[2]])
-    expect(activity.getFriendsData(user1, "2019/06/15", [userData[1], userData[2]])).to.deep.equal([[activityData[17], activityData[16], activityData[15],activityData[14], activityData[13], activityData[12], activityData[11], activityData[10]], [activityData[25], activityData[24], activityData[23],activityData[22], activityData[21], activityData[20], activityData[19], activityData[18]]])
+    expect(activity.getFriendsData(user1, "2019/06/15", [userData[1], userData[2]])).to.deep.equal([
+      [
+        activityData[17],
+        activityData[16],
+        activityData[15],
+        activityData[14],
+        activityData[13],
+        activityData[12],
+        activityData[11],
+        activityData[10]
+      ],
+      [
+        activityData[25],
+        activityData[24],
+        activityData[23],
+        activityData[22],
+        activityData[21],
+        activityData[20],
+        activityData[19],
+        activityData[18]]])
   })
   it('it should be able to get total steps for each of the users friends', function() {
     const friendsData = activity.getFriendsData(user1, "2019/06/15", [userData[1], userData[2]])

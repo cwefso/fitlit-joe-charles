@@ -1,15 +1,22 @@
-const greeting = document.querySelector('.greeting')
 const users = document.querySelector('.users')
 const hydration = document.querySelector('.hydration')
 const sleep = document.querySelector('.sleep')
 const activity = document.querySelector('.activity')
+<<<<<<< HEAD
+const userRepo = new UserRepository(userData);
+let todaysDate = '2019/09/22'
+let thisUser = {}
+
+
+=======
 var userRepo = new UserRepository(userData);
 var todaysDate = '2019/09/22'
 var thisUser = {}
 
+>>>>>>> 6e41d4b69e4c7a16e5e824385cd5b4e851d8cc15
 const makeUser = () => {
   const randomUser = Math.floor(Math.random() * userData.length)
-  var user = new User(userData[randomUser])
+  const user = new User(userData[randomUser])
   displayUserInfo(user)
   makeHydration(user)
   makeActivity(user)
@@ -71,7 +78,8 @@ const displayStepLeaders = (stepLeaders) => {
   const stepLeadersDOM = document.querySelector(".leaders")
   const sortedStepLeaders = stepLeaders.sort((a, b) => b.stepTotal - a.stepTotal)
   const leaderNames = sortedStepLeaders.map(leader => userRepo.getUserByID(leader.id).name.split(' ')[0])
-  stepLeadersDOM.insertAdjacentHTML('beforeend', `<p class="leaders-info">${leaderNames[0]} has ${sortedStepLeaders[0].stepTotal} steps.</p>
+  stepLeadersDOM.insertAdjacentHTML('beforeend',
+    `<p class="leaders-info">${leaderNames[0]} has ${sortedStepLeaders[0].stepTotal} steps.</p>
                                            <p class="leaders-info">${leaderNames[1]} has ${sortedStepLeaders[1].stepTotal} steps.</p>
                                            <p class="leaders-info">${leaderNames[2]} has ${sortedStepLeaders[2].stepTotal} steps.</p>
                                           `)
@@ -120,7 +128,7 @@ const displayLeadersInfo = () => {
 
 }
 
-const createStepGoal = (user) => {
+const createStepGoal = () => {
   const stepGoal = document.querySelector('.step-goal')
   stepGoal.innerHTML =
   `<p class="ahead-or-behind"></p>`
@@ -174,8 +182,14 @@ const makeSleep = (user) => {
 const showSleepCard = (newSleep) => {
   let weeksSleepData = newSleep.getOneUserWeekOfSleepData(todaysDate)
   sleep.innerHTML = `
-  <section class="sleep-card"><p>Hours Slept Average: ${newSleep.getAverageDailySleep()} hours</p><p>Sleep Quality Average: ${newSleep.getAverageSleepQuality()}</p></section>
-  <section class="sleep-card"><p>Today's Hours Slept: ${newSleep.getSleepForSpecificDay(todaysDate)}</p><p>Today's Sleep Quality: ${newSleep.getQualityForSpecificDay(todaysDate)}</p></section>
+  <section class="sleep-card">
+  <p>Hours Slept Average: ${newSleep.getAverageDailySleep()} hours</p>
+  <p>Sleep Quality Average: ${newSleep.getAverageSleepQuality()}</p>
+  </section>
+  <section class="sleep-card">
+  <p>Today's Hours Slept: ${newSleep.getSleepForSpecificDay(todaysDate)}</p>
+  <p>Today's Sleep Quality: ${newSleep.getQualityForSpecificDay(todaysDate)}</p>
+  </section>
   <section class="sleep-card">
   <ul><li>Yesterday's Sleep: Hours Slept: ${weeksSleepData[1].hoursSlept} Sleep Quality ${weeksSleepData[0].sleepQuality}</l1>
     <li>${weeksSleepData[2].date}: Hours Slept: ${weeksSleepData[2].hoursSlept} Sleep Quality ${weeksSleepData[1].sleepQuality}</li>
@@ -191,20 +205,22 @@ const showSleepCard = (newSleep) => {
 const makeActivity = (user) => {
   let newActivity = new Activity(activityData, user)
   showActivityCard(newActivity, user)
-  displayStepChallenge(newActivity)
   getStepLeaders(newActivity)
 }
 
-const showActivityCard = (newActivity, user) => {
+const showActivityCard = (newActivity) => {
   let weeksActivityData = newActivity.getOneUserWeekOfActivityData(todaysDate)
   activity.innerHTML = `
   <section class="activity-card"><p>Miles Walked:</p><p>${newActivity.getMilesWalkedToday(todaysDate)} miles</p></section>
   <section class="activity-card"><p>Minutes Active</p>${newActivity.getUserActivityMinutes(todaysDate)}</p></section>
   <section class="activity-card"><p>Today's Steps:</p><p> ${newActivity.getUserActivityMinutes(todaysDate)}</p></section>
   <section class="activity-card">
-  <p>Steps: ${newActivity.getUserActivityToday(todaysDate).numSteps}.</p><p>Average: ${newActivity.getAveragesForAll(todaysDate, 'numSteps')}</p>
-  <p>Flights of Stairs Climbed: ${newActivity.getUserActivityToday(todaysDate).flightsOfStairs}</p><p>Average: ${newActivity.getAveragesForAll(todaysDate, 'flightsOfStairs')}</p>
-  <p>Active minutes: ${newActivity.getUserActivityToday(todaysDate).minutesActive}</p><p>Average: ${newActivity.getAveragesForAll(todaysDate, 'minutesActive')}</p>
+  <p>Steps: ${newActivity.getUserActivityToday(todaysDate).numSteps}.</p>
+  <p>Average: ${newActivity.getAveragesForAll(todaysDate, 'numSteps')}</p>
+  <p>Flights of Stairs Climbed: ${newActivity.getUserActivityToday(todaysDate).flightsOfStairs}</p>
+  <p>Average: ${newActivity.getAveragesForAll(todaysDate, 'flightsOfStairs')}</p>
+  <p>Active minutes: ${newActivity.getUserActivityToday(todaysDate).minutesActive}</p>
+  <p>Average: ${newActivity.getAveragesForAll(todaysDate, 'minutesActive')}</p>
   </section>
   <section class="activity-card">
   <ul><li>Yesterday's Activity: Steps: ${weeksActivityData[1].numSteps}  Minutes Active: ${weeksActivityData[1].minutesActive}   Flights Of Stairs: ${weeksActivityData[1].flightsOfStairs}</li>
@@ -219,12 +235,6 @@ const showActivityCard = (newActivity, user) => {
   `
 }
 
-const displayStepChallenge = (activity) => {
-  const friendsList = createFriendsList(activity.currentUser)
-  const userData = activity.getFriendsData('', todaysDate, friendsList)
-  const allFriendsTotalSteps = activity.getFriendsSteps(userData)
-}
-
 const createSelectDateQuerySelector = () => {
   const button = document.querySelector('.set-date-button')
   button.addEventListener('click', setDate)
@@ -232,7 +242,7 @@ const createSelectDateQuerySelector = () => {
 
 function checkInput(data) {
   var dates = sleepData.map(date => date.date)
-  if(!dates.includes(data)) {
+  if (!dates.includes(data)) {
     alert("No Data!")
   } else {
     makeHydration(thisUser)

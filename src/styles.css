@@ -17,10 +17,10 @@ body {
   all: unset;
   background-color: #242423;
   font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
   max-height: 100vh;
   min-height: 100vh;
-  place-items: center;
-  font-size: 16px 
+  place-items: center
 }
 
 h1 {
@@ -35,19 +35,19 @@ h1 {
 .content {
   all: unset;
   background-color: #242423;
-  min-height: 89vh;
   display: grid;
   grid-area: 3 / 1 / 10 / 10;
   grid-template-columns: repeat(20, 5%);
   grid-template-rows: repeat(10, 10%);
   height: 89vh;
+  min-height: 89vh;
 }
 
 .ahead-or-behind {
-  padding: 1%, 2%, 1%, 2%;
-  background-image: linear-gradient( #F25F5C, rgb(92, 242, 99));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-image: linear-gradient( #F25F5C, rgb(92, 242, 99));
+  padding: 1%, 2%, 1%, 2%;
 }
 
 .box-text {
@@ -84,62 +84,62 @@ h1 {
 }
 
 .friends-names, .friend {
-  font-size: 12px;
-  background-image: linear-gradient( #F25F5C, rgb(92, 242, 99));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-image: linear-gradient( #F25F5C, rgb(92, 242, 99));
+  font-size: 12px;
 }
 
 .your-step-goal {
-  font-size: 12px;
-  background-image: linear-gradient( #F25F5C, rgb(92, 242, 99));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-image: linear-gradient( #F25F5C, rgb(92, 242, 99));
+  font-size: 12px;
 }
 
 .welcome {
-  font-size: 18px;
-  animation: shimmy 2s linear 3;
-  margin-bottom: 1px;
-  background-image: linear-gradient( #F25F5C, rgb(92, 242, 99));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: shimmy 2s linear 3;
+  background-image: linear-gradient( #F25F5C, rgb(92, 242, 99));
+  font-size: 18px;
+  margin-bottom: 1px;
 }
 
 @keyframes shimmy {
 
   10% {
-  transform: rotate(.007turn);
-  background-size: 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-size: 100%;
+  transform: rotate(.007turn);
   }
   20% {
-    background-size: 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-size: 100%;
   }
   30% {
-    transform: rotate(-.007turn);
-    background-size: 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-size: 100%;
+    transform: rotate(-.007turn);
   }
   40% {
-  transform: rotate(.007turn);
-  background-size: 100%;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;  }
+  -webkit-text-fill-color: transparent;
+  background-size: 100%;
+  transform: rotate(.007turn);  }
   50% {
-  transform: rotate(.007turn);
-  background-size: 100%;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;  }
+  -webkit-text-fill-color: transparent;
+  background-size: 100%;
+  transform: rotate(.007turn);  }
   60% {
-    transform: rotate(-.007turn);
-    background-size: 100%;
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;  }
+    -webkit-text-fill-color: transparent;
+    background-size: 100%;
+    transform: rotate(-.007turn);  }
   70% {
     transform: rotate(0turn);
   }
@@ -164,8 +164,8 @@ h1 {
 }
 
 .hydration-card {
-  border-radius: 5px;
   border: 1px solid #70C1B3;
+  border-radius: 5px;
   box-shadow: 0px 0px 10px -5px #fff;
   height: auto;
   padding: 20px;
@@ -190,8 +190,8 @@ h1 {
   border-radius: 5px;
   box-shadow: 0px 0px 10px -5px #fff;
   height: auto;
-  padding: 20px;
   margin-bottom: 10%;
+  padding: 20px;
   width : 100%;
 }
 
@@ -210,19 +210,19 @@ h1 {
 }
 
 .activity-card {
-  border-radius: 5px;
   border: 1px solid #FFE066;
+  border-radius: 5px;
   box-shadow: 0px 0px 10px -5px #fff;
   height: auto;
-  padding: 20px;
   margin-bottom: 10%;
+  padding: 20px;
   width: auto;
 }
 
 .leaders {
-  background-image: linear-gradient( #F25F5C, rgb(92, 242, 99));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-image: linear-gradient( #F25F5C, rgb(92, 242, 99));
   margin-top: 5%;
 }
 
@@ -231,22 +231,22 @@ h1 {
 }
 
 .see-user-info {
-  height: 30px;
-  display: inline;
-  width: 30px;
-  border-radius: 50%;
-  margin-right: 5%;
   background-color: #242423;
   background-image: url(images/profile.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: 20px, 20px;
+  border-radius: 50%;
   color: #fff;
-  outline: none;
   cursor: pointer;
+  display: inline;
+  height: 30px;
   height: 50px;
   margin-left: 35%;
+  margin-right: 5%;
   outline: none;
+  outline: none;
+  width: 30px;
   width: 50px;
 }
 
@@ -258,19 +258,19 @@ h1 {
 }
 
 .see-leaders-btn {
-  height: 30px;
-  display: inline;
-  width: 30px;
-  border-radius: 50%;
-  margin-left: 5%;
   background-color: #242423;
-  color: #fff;
   background-image: url(images/info.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: 20px, 20px;
-  outline: none;
+  border-radius: 50%;
+  color: #fff;
   cursor: pointer;
+  display: inline;
+  height: 30px;
+  margin-left: 5%;
+  outline: none;
+  width: 30px;
 }
 
 .see-leaders-btn:hover {
@@ -281,13 +281,13 @@ h1 {
 }
 
 #set-date {
-  color: #fff;
-  padding: 5%;
-  font-size: 8px;
   background-color: #242423;
-  margin-top: 5%;
-  width: 80%;
   border: 1px solid #333533;
+  color: #fff;
+  font-size: 8px;
+  margin-top: 5%;
+  padding: 5%;
+  width: 80%;
 }
 
 #set-date:hover {
@@ -300,13 +300,13 @@ h1 {
 }
 
 .set-date-button {
+  background-color: #242423;
+  border: 1px solid #333533;
   color: #fff;
   font-size: 8px;
-  background-color: #242423;
   height: 20%;
-  width: 86.5%;
-  border: 1px solid #333533;
   padding: 1%;
+  width: 86.5%;
 }
 
 .set-date-button:hover {
@@ -325,5 +325,3 @@ h1 {
 .hide {
   display: none;
 }
-
-
