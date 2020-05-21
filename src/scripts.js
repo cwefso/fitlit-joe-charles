@@ -94,7 +94,7 @@ const showHydrationCard = (newHydration) => {
   let weeksHydroData = newHydration.getWeekOfHydroData(todaysDate)
   hydration.innerHTML = `
   <section class="hydration-card"><p>Hydration Average: ${newHydration.getAverageDailyOunces()} oz</p></section>
-  <section class="hydration-card"><p>Todays Hydration: ${newHydration.getOuncesForSpecificDay(todaysDate)} oz</p></section>
+  <section class="hydration-card"><p>Today's Hydration: ${newHydration.getOuncesForSpecificDay(todaysDate)} oz</p></section>
   <section class="hydration-card">
   <ul><li>Yesterday: ${weeksHydroData[1].numOunces} oz</li>
     <li>${weeksHydroData[2].date}: ${weeksHydroData[2].numOunces}oz</li>
@@ -116,7 +116,7 @@ const showSleepCard = (newSleep) => {
   let weeksSleepData = newSleep.getOneUserWeekOfSleepData(todaysDate)
   sleep.innerHTML = `
   <section class="sleep-card"><p>Hours Slept Average: ${newSleep.getAverageDailySleep()} hours</p><p>Sleep Quality Average: ${newSleep.getAverageSleepQuality()}</p></section>
-  <section class="sleep-card"><p>Todays Hours Slept: ${newSleep.getSleepForSpecificDay(todaysDate)}</p><p>Todays Sleep Quality: ${newSleep.getQualityForSpecificDay(todaysDate)}</p></section>
+  <section class="sleep-card"><p>Today's Hours Slept: ${newSleep.getSleepForSpecificDay(todaysDate)}</p><p>Today's Sleep Quality: ${newSleep.getQualityForSpecificDay(todaysDate)}</p></section>
   <section class="sleep-card">
   <ul><li>Yesterday's Sleep: Hours Slept: ${weeksSleepData[1].hoursSlept} Sleep Quality ${weeksSleepData[0].sleepQuality}</l1>
     <li>${weeksSleepData[2].date}: Hours Slept: ${weeksSleepData[2].hoursSlept} Sleep Quality ${weeksSleepData[1].sleepQuality}</li>
